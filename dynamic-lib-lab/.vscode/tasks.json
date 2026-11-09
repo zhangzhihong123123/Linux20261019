@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "生成动态库 mymath.dll",
+            "type": "shell",
+            "command": "gcc -shared -o mymath.dll add.c subtract.c multiply.c divide.c",
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "编译 test.exe（显式链接）",
+            "type": "shell",
+            "command": "gcc -g test.c -lm -o test.exe",
+            "group": "build",
+            "dependsOn": ["生成动态库 mymath.dll"],
+            "dependsOrder": "sequence",
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}
