@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "生成静态库 mymath.lib",
+            "type": "shell",
+            "command": "gcc -c add.c subtract.c multiply.c divide.c && ar rcs mymath.lib add.o subtract.o multiply.o divide.o && ar t mymath.lib",
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "编译 test.exe（带 -g 调试信息）",
+            "type": "shell",
+            "command": "gcc -g test.c mymath.lib -lm -o test.exe",
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}
